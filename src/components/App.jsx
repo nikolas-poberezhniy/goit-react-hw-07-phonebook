@@ -27,8 +27,12 @@ export class App extends Component {
       phone: e.number,
     };
 
-    if (this.state.contacts.map(e => e.name).includes(e.name)) {
-      alert('Такой контакт уже есть');
+    if (
+      this.state.contacts
+        .map(e => e.name.toLowerCase())
+        .includes(e.name.toLowerCase())
+    ) {
+      alert(`${e.name} already exist`);
       return;
     }
     this.setState(prevState => ({
@@ -45,7 +49,7 @@ export class App extends Component {
   };
 
   render() {
-    const filterNormilized = this.state.filter.toLowerCase().trim();
+    const filterNormilized = this.state.filter.trim();
     const visibleContacts = this.state.contacts.filter(({ name }) =>
       name.toLowerCase().includes(filterNormilized)
     );

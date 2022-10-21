@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 // import { Formik, Form, Field } from 'formik';
 
 export class SavingForm extends Component {
@@ -57,3 +59,7 @@ export class SavingForm extends Component {
     );
   }
 }
+
+SavingForm.propTypes = {
+  handelSubmit: PropTypes.func,
+};
