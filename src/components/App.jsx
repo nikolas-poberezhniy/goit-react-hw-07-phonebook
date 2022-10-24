@@ -7,15 +7,19 @@ import { Filter } from './FilterField/FilterField';
 
 export class App extends Component {
   state = {
-    contacts: [
-      { id: nanoid(), name: 'John', phone: '123456789' },
-      { id: nanoid(), name: 'Marry', phone: '234567890' },
-      { id: nanoid(), name: 'Nick', phone: '345678901' },
-      { id: nanoid(), name: 'Dick', phone: '456789012' },
-    ],
+    contacts: [],
     filter: '',
   };
-
+  componentDidMount() {
+    if (localStorage.contacts) {
+      this.setState({ contacts: JSON.parse(localStorage.contacts) });
+    }
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
   filter = e => {
     this.setState({ filter: e.target.value });
   };
