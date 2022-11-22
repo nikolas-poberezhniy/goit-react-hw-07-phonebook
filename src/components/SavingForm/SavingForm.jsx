@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from 'redux/contactsSlice';
+export function SavingForm() {
+  const dispatch = useDispatch();
 
-export function SavingForm({ handelSubmit }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -26,7 +29,7 @@ export function SavingForm({ handelSubmit }) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    handelSubmit({ name, number });
+    dispatch(addContact(name, number));
     stateReset();
   };
 
@@ -64,7 +67,3 @@ export function SavingForm({ handelSubmit }) {
     </form>
   );
 }
-
-SavingForm.propTypes = {
-  handelSubmit: PropTypes.func,
-};

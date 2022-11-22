@@ -1,14 +1,17 @@
-import PropTypes from 'prop-types';
+import { setFilter } from 'redux/filterSlice';
+import { useDispatch } from 'react-redux';
 
-export const Filter = ({ filter }) => {
+export const Filter = () => {
+  const dispatch = useDispatch();
+
+  const handleInput = e => {
+    dispatch(setFilter(e.target.value));
+  };
+
   return (
     <label htmlFor="filterField">
       Filter
-      <input id="filterField" type="text" onChange={filter} />
+      <input id="filterField" type="text" onChange={handleInput} />
     </label>
   );
-};
-
-Filter.propTypes = {
-  filter: PropTypes.func.isRequired,
 };
