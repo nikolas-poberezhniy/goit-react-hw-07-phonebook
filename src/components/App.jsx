@@ -1,19 +1,17 @@
-import { Section } from './Section/Section';
-import { SavingForm } from './SavingForm/SavingForm';
-import { ContactList } from './ContactList/ContactList';
-import { Filter } from './FilterField/FilterField';
+import { AppWrapp } from './App.styled';
+import Phonebook from './Phonebook/Phonebook';
+import Contacts from './Contacts/Contacts';
+import Filter from './Filter/Filter';
 
-export function App() {
+export default function App() {
   return (
-    <>
-      <Section title="Phonebook">
-        <SavingForm />
-      </Section>
+    <AppWrapp>
+      <h1>Phonebook</h1>
+      <Phonebook />
+      <h3>Contacts</h3>
 
-      <Section title="Contacts">
-        <Filter />
-        <ContactList />
-      </Section>
-    </>
+      <Filter />
+      <Contacts />
+    </AppWrapp>
   );
 }
